@@ -21,7 +21,7 @@ dataset = pd.read_csv('Churn_Modelling.csv')
 X = dataset.iloc[:, 3:13].values
 y = dataset.iloc[:, 13].values
 
-# Encoding categorical data
+# Encoding categorical data 
 from sklearn.preprocessing import LabelEncoder, OneHotEncoder
 labelencoder_X_1 = LabelEncoder()
 X[:, 1] = labelencoder_X_1.fit_transform(X[:, 1])
@@ -57,14 +57,16 @@ classifier.add(Dense(units = 6, kernel_initializer = 'uniform', activation = 're
 # Adding the second hidden layer
 classifier.add(Dense(units = 6, kernel_initializer = 'uniform', activation = 'relu'))
 
+classifier.add(Dense(units = 6, kernel_initializer = 'uniform', activation = 'relu'))
+
 # Adding the output layer
 classifier.add(Dense(units = 1, kernel_initializer = 'uniform', activation = 'sigmoid'))
-
+ 
 # Compiling the ANN
 classifier.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
 
 # Fitting the ANN to the Training set
-classifier.fit(X_train, y_train, batch_size = 10, epochs = 100)
+classifier.fit(X_train, y_train, batch_size = 10, epochs = 20)
 
 # Part 3 - Making predictions and evaluating the model
 
